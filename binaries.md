@@ -1,12 +1,8 @@
-# Binary Files
+# Handling LARGE Binaries
 
-The folder ```binaries```conatins the system images, and the guest workload binaries. These are not included in the git repo (for size constraints).
+This repository uses github's LFS git plugin to track LARGE files. See the REPO's [attribute files](.gitattributes) for the complete list. 
 
-
-(TODO: LIST the binary files here, and were they should be installed)
-
-
-**Full System Images**
+## LFS Tracked files
 
 ```
 
@@ -16,10 +12,13 @@ gem5/full_system_images/binaries/vmlinux
 gem5/full_system_images/disks/linux-bigswap2.img
 gem5/full_system_images/disks/linux-linux-latest.img
 gem5/full_system_images/disks/linux-x86.img
-
+gem5/build/X86/gem5.opt
+gem5/build/X86/arch/x86/generated//inst-constrs.o
 ```
 
-*** COmpiled gem5 ***
-```
-/Users/gad/git-repos/mc2lib_for_gem5/gem5/build/X86/gem5.opt
-```
+
+## Binaries Folder
+
+The contents of the  ```binaries``` folder are [ignored by this repo](.gitignore). 
+
+
