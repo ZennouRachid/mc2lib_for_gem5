@@ -1,0 +1,16 @@
+--- pseudo_inst.hh
++++ pseudo_inst.hh
+@@ -88,6 +88,13 @@
+ void switchcpu(ThreadContext *tc);
+ void workbegin(ThreadContext *tc, uint64_t workid, uint64_t threadid);
+ void workend(ThreadContext *tc, uint64_t workid, uint64_t threadid);
++void markTestMemRange(ThreadContext *tc, Addr vaddr_start, Addr vaddr_end,
++                      uint64_t stride, Addr addr_mask);
++uint64_t makeTestThread(ThreadContext *tc, Addr code_vaddr, uint64_t len);
++uint64_t verifyResetConflict(ThreadContext *tc, Addr used_addrs, uint64_t len);
++uint64_t verifyResetAll(ThreadContext *tc, Addr used_addrs, uint64_t len);
++uint64_t barrierAsync(ThreadContext *tc, uint64_t num_threads,
++                      uint64_t with_quiesce);
+ 
+ } // namespace PseudoInst
+ 

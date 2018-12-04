@@ -1,0 +1,8 @@
+--- README.rst
++++ README.rst
+@@ -1,5 +0,0 @@
+-McVerSi Guest Workload
+-======================
+-
+-This is the guest workload as used in the McVerSi paper, with modification to
+-enable support on more architectures.

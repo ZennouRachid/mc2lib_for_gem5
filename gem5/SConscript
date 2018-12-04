@@ -1,0 +1,6 @@
+# -*- mode:python -*-
+
+Import('main')
+main.Prepend(CPPPATH=Dir('./include'))
+
+# vim: set ft=python :

@@ -1,0 +1,63 @@
+scons: Reading SConscript files ...
+Warning: Protocol buffer compiler (protoc) not found.
+         Please install protobuf-compiler for tracing support.
+Checking for C header file Python.h... (cached) yes
+Checking for C library python2.7... (cached) yes
+Checking for C library pthread... (cached) yes
+Checking for C library dl... (cached) yes
+Checking for C library util... (cached) yes
+Checking for C library m... (cached) yes
+Checking for accept(0,0,0) in C++ library None... (cached) yes
+Checking for zlibVersion() in C++ library z... (cached) yes
+Checking for clock_nanosleep(0,0,NULL,NULL) in C library None... (cached) yes
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library None... (cached) no
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library rt... (cached) yes
+Checking for C library tcmalloc... (cached) yes
+Checking for backtrace_symbols_fd((void*)0, 0, 0) in C library None... (cached) yes
+Checking for C header file fenv.h... (cached) yes
+Checking for C header file linux/kvm.h... (cached) yes
+Checking size of struct kvm_xsave ... (cached) yes
+Checking for member exclude_host in struct perf_event_attr...(cached) yes
+Building in /home/rachid/Documents/gem5-e1/build/X86
+Using saved variables file /home/rachid/Documents/gem5-e1/build/variables/X86
+scons: done reading SConscript files.
+scons: Building targets ...
+ [NEW DEPS] X86/arch/x86/generated/inc.d -> x86-deps
+ [ENVIRONS] x86-deps -> x86-environs
+ [VER TAGS]  -> X86/sim/tags.cc
+ [     CXX] X86/sim/process.cc -> .o
+ [     CXX] X86/sim/pseudo_inst.cc -> .o
+ [     CXX] X86/sim/syscall_emul.cc -> .o
+ [ TRACING]  -> X86/debug/ThermalDomain.hh
+ [SO PARAM] ThermalCapacitor -> X86/params/ThermalCapacitor.hh
+ [SO PARAM] ThermalReference -> X86/params/ThermalReference.hh
+ [SO PARAM] ThermalResistor -> X86/params/ThermalResistor.hh
+ [     CXX] X86/sim/power/thermal_domain.cc -> .o
+ [SO PARAM] ThermalNode -> X86/params/ThermalNode.hh
+ [ TRACING]  -> X86/debug/ProbeVerbose.hh
+ [ TRACING]  -> X86/debug/CommMonitor.hh
+ [SO PARAM] CommMonitor -> X86/params/CommMonitor.hh
+ [     CXX] X86/sim/probe/probe.cc -> .o
+ [     CXX] X86/sim/power/thermal_model.cc -> .o
+ [ TRACING]  -> X86/debug/LLSC.hh
+ [     CXX] X86/mem/comm_monitor.cc -> .o
+ [ TRACING]  -> X86/debug/MemoryAccess.hh
+ [     CXX] X86/mem/abstract_mem.cc -> .o
+ [SO PARAM] AddrMapper -> X86/params/AddrMapper.hh
+ [SO PARAM] RangeAddrMapper -> X86/params/RangeAddrMapper.hh
+ [     CXX] X86/mem/addr_mapper.cc -> .o
+ [ TRACING]  -> X86/debug/Bridge.hh
+ [SO PARAM] Bridge -> X86/params/Bridge.hh
+ [     CXX] X86/mem/bridge.cc -> .o
+ [ TRACING]  -> X86/debug/AddrRanges.hh
+ [ TRACING]  -> X86/debug/CoherentXBar.hh
+ [SO PARAM] CoherentXBar -> X86/params/CoherentXBar.hh
+ [SO PARAM] SnoopFilter -> X86/params/SnoopFilter.hh
+ [SO PARAM] BaseXBar -> X86/params/BaseXBar.hh
+ [     CXX] X86/mem/coherent_xbar.cc -> .o
+ [SO PARAM] DRAMCtrl -> X86/params/DRAMCtrl.hh
+ [ENUMDECL] AddrMap -> X86/enums/AddrMap.hh
+ [ENUMDECL] MemSched -> X86/enums/MemSched.hh
+ [ENUMDECL] PageManage -> X86/enums/PageManage.hh
+ [     CXX] X86/mem/drampower.cc -> .o
+scons: building terminated because of errors.

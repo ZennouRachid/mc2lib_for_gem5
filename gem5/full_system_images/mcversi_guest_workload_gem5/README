@@ -1,0 +1,7 @@
+These are pre-compiled binaries are for use with McVerSi:
+http://ac.marcoelver.com/research/mcversi
+
+guest_workload*: just binary.
+
+guest_workload*.sh: can be used as --script; extracts binary automatically and
+starts with parameters for 4 threads.
