@@ -30,7 +30,7 @@
     6. Type whether successful by cd movefile and ls
     7. Unmount the image by typing: ```sudo umount mount``` from full_system_images directory.
 # Run McVerSi Guest Workload under X86 architecture:
-  - Start up the full system with the paper parameters: ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --num-cpus=8 --cpu-clock=2GHz --ruby  --caches --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --garnet-network=fixed --topology=Mesh --mesh-rows=2 ```
+  - Start up the full system with the paper parameters: ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2  --num-l2caches=16 --num-dirs=16 --garnet-network=fixed ```
   - Use telnet to access to the console: telnet localhost 3456
   - cd movefile :
   - Run the pre-compiled McVerSi Guest Workload using provided parameters in this [link](https://github.com/melver/mc2lib/blob/master/contrib/mcversi/run-10-8KB.sh) with 4 threads instead 10 for the first time: ``` ./guest_workload 4  0xf00200 0x09140010 0x100000000 ```
