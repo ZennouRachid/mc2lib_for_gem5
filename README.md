@@ -11,6 +11,7 @@
  1. ROB entries = 40: modify the default value of ROBEntries in src/cpu/o3/O3CPU.py. The default value is 192; we modify it to 40.
  2. LSQ entries = 32: modify the default value of LQEntries and SQEntries in src/cpu/o3/O3CPU.py. Since gem5 has a separate queue for loads and stores, we set each variable to 16 so that the aggregated size becomes 32.
 3. L1 and L2 hit latency: modify the default value of hit_latency in the L1Cache class and L2Cache class in configs/common/Caches.py. 
+4. We still need to know how to set the Memory latency, so we supposed that we use the default value.
 # Build the X86 Architecture:
 - Build the arch x86 : ```scons build/X86/gem5.opt -j8``` with –j is the number of cores to create.
 - To use full system: 
