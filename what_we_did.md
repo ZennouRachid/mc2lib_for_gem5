@@ -2,8 +2,6 @@ We used a Virtual machine with the following parameters :
 
 Memory : 4096MB
 
-Number of cores : 4
-
 Processor : Intel® Core™ i5-5200U CPU @ 2.20GHz × 4
 
 Hard disk : 250 GB
@@ -124,7 +122,13 @@ warn: x86 cpuid: unknown family 0x8086
 warn: x86 cpuid: unknown family 0x8086
 
 hack: Assuming logical destinations are 1 << id.
+# Run a hello world script under X86 full system:
+In order to test our X86 full system, we used it to  run a hello world script (gem5/tests/test-progs/hello/bin/x86/linux/hello):
+```(none) movefile # ./hello```
 
+./hello
+
+Hello world!
 # Run Mcversi Guest Workload under X86 full system:
    # Using 4 threads:
 (none) movefile # ```./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000```
