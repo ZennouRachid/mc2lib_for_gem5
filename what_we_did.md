@@ -9,7 +9,7 @@ Hard disk : 250 GB
 OS : Ubuntu 18.04.1 LTS 64-bit
 
 # Run X86 full system
-rachid@ubuntu:~/gem5$ ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2  --num-l2caches=16 --num-dirs=16 --garnet-network=fixed ```
+rachid@ubuntu:~/gem5$ ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed ```
 
 gem5 Simulator System.  http://gem5.org
 
