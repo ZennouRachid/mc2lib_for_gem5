@@ -170,4 +170,16 @@ Spawning threads ...
 guest_workload.x86-64: guest_workload.c:223: spawn_threads: Assertion `!rc' failed.
 
 Aborted
+# Get traces using Gem5 (github version of Gem5):
+
+Here is an example of getting traces from Gem5 execution:
+
+   1. Using System emulation mode (SE):
+   
+./build/X86/gem5.opt --debug-flags=MMU --debug-file=mmu_trace.log ./configs/example/se.py --cpu-type=TimingSimpleCPU --caches --l2cache -c tests/test-progs/hello/bin/x86/linux/hello 
+
+   2. Using the full system mode (FS):
+
+./build/X86/gem5.opt --debug-flags=TLB --debug-file=tlb_trace.log ./configs/example/fs.py –cpu-type=TimingSimpleCPU --caches --l2cache
+
 
