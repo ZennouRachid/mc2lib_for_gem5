@@ -182,7 +182,7 @@ We then tried to run MecVersi's guest workload, following the instructions from 
 ### Using 4 threads:
 
 ```(console)
-(none) movefile # ```./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000```
+(none) movefile # ./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000
 
 ./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000
 ```
@@ -214,8 +214,8 @@ Segmentation fault
 
 We also tried using 10 threads, again with no luck.
 
-``(console)
-none) movefile # ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
+```(console)
+(none) movefile # ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
 
 ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
 ```
