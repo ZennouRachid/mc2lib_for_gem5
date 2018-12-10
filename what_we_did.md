@@ -1,4 +1,4 @@
-We used a Virtual machine with the following parameters :
+We use a Virtual machine with the following parameters :
 
 Memory : 4096MB
 
@@ -9,8 +9,15 @@ Hard disk : 250 GB
 OS : Ubuntu 18.04.1 LTS 64-bit
 
 # Run X86 full system
-rachid@ubuntu:~/gem5$ ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed ```
 
+```shell
+rachid@ubuntu:~/gem5$ ./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed 
+
+```
+
+Console Output
+
+```
 gem5 Simulator System.  http://gem5.org
 
 gem5 is copyrighted software; use the --copyright option for details.
@@ -122,19 +129,27 @@ warn: x86 cpuid: unknown family 0x8086
 warn: x86 cpuid: unknown family 0x8086
 
 hack: Assuming logical destinations are 1 << id.
+```
+
 # Run a hello world script under X86 full system:
+
 In order to test our X86 full system, we used it to  run a hello world script (gem5/tests/test-progs/hello/bin/x86/linux/hello):
+
 ```(none) movefile # ./hello```
 
 ./hello
 
 Hello world!
+
 # Run Mcversi Guest Workload under X86 full system:
-   # Using 4 threads:
+
+## Using 4 threads:
+
 (none) movefile # ```./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000```
 
 ./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000
 
+```
 Threads: 4
 
 Test iterations: 15729152
@@ -154,8 +169,11 @@ guest_workload.[831]: segfault at 0000000000000000 rip 00002aaaaaadb000 rsp 0000
 guest_workload.[834]: segfault at 0000000000000000 rip 00002aaaaaacb000 rsp 00000000418020e8 error 4
 
 Segmentation fault
-  # Using 10 threads:
-(none) movefile # ```./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000```
+```
+
+ ## Using 10 threads:
+(
+none) movefile # ```./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000```
 
 ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
 
