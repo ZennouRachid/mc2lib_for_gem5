@@ -1,0 +1,72 @@
+Here is the program:
+```
+int main()
+{
+    return 0;
+}
+
+```
+A part of trace we got:
+
+```
+      0: global: Write from .functional of size 64 on address 0 C
+      0: global: 00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00    ELF            
+      0: global: 00000010  03 00 3e 00 01 00 00 00  f0 04 00 00 00 00 00 00     >     p       
+      0: global: 00000020  40 00 00 00 00 00 00 00  e8 18 00 00 00 00 00 00   @       h       
+      0: global: 00000030  00 00 00 00 40 00 38 00  09 00 40 00 1c 00 1b 00       @ 8   @     
+      0: global: Write from .functional of size 64 on address 0x40 C
+      0: global: 00000000  06 00 00 00 04 00 00 00  40 00 00 00 00 00 00 00           @       
+      0: global: 00000010  40 00 00 00 00 00 00 00  40 00 00 00 00 00 00 00   @       @       
+      0: global: 00000020  f8 01 00 00 00 00 00 00  f8 01 00 00 00 00 00 00   x       x       
+      0: global: 00000030  08 00 00 00 00 00 00 00  03 00 00 00 04 00 00 00                   
+      0: global: Write from .functional of size 64 on address 0x80 C
+      0: global: 00000000  38 02 00 00 00 00 00 00  38 02 00 00 00 00 00 00   8       8       
+      0: global: 00000010  38 02 00 00 00 00 00 00  1c 00 00 00 00 00 00 00   8               
+      0: global: 00000020  1c 00 00 00 00 00 00 00  01 00 00 00 00 00 00 00                   
+      0: global: 00000030  01 00 00 00 05 00 00 00  00 00 00 00 00 00 00 00                   
+      0: global: Write from .functional of size 64 on address 0xc0 C
+      0: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
+      0: global: 00000010  d8 07 00 00 00 00 00 00  d8 07 00 00 00 00 00 00   X       X       
+      0: global: 00000020  00 00 20 00 00 00 00 00  01 00 00 00 06 00 00 00                   
+      0: global: 00000030  f0 0d 00 00 00 00 00 00  f0 0d 20 00 00 00 00 00   p       p       
+ 
+```
+      
+Another part:      
+
+
+```
+        90316500: global: Read from .cpu.data of size 8 on address 0x2dce0 data 0 C
+        90318000: global: IFetch from .cpu.inst of size 8 on address 0xd5680 data 0x5d415c415d5b48c4 C
+        90318000: global: Read from .cpu.data of size 8 on address 0x2dce8 data 0x7ffff7db4740 C
+        90319500: global: IFetch from .cpu.inst of size 8 on address 0xd5680 data 0x5d415c415d5b48c4 C
+        90319500: global: Read from .cpu.data of size 8 on address 0x2dcf0 data 0x1 C
+        90321000: global: IFetch from .cpu.inst of size 8 on address 0xd5688 data 0x1f0fc35f415e41 C
+        90321000: global: Read from .cpu.data of size 8 on address 0x2dcf8 data 0x7ffff7dbd628 C
+        90322500: global: IFetch from .cpu.inst of size 8 on address 0xd5688 data 0x1f0fc35f415e41 C
+        90322500: global: Read from .cpu.data of size 8 on address 0x2dd00 data 0 C
+        90324000: global: IFetch from .cpu.inst of size 8 on address 0xd5688 data 0x1f0fc35f415e41 C
+        90324000: global: Read from .cpu.data of size 8 on address 0x2dd08 data 0x7ffff7a10102 C
+        90325500: global: IFetch from .cpu.inst of size 8 on address 0x89100 data 0x394c08c3834813ff C
+        90326500: global: IFetch from .cpu.inst of size 8 on address 0x89100 data 0x394c08c3834813ff C
+        90327000: global: IFetch from .cpu.inst of size 8 on address 0x89108 data 0x1cbee8ef89f575e3 C
+        90327500: global: IFetch from .cpu.inst of size 8 on address 0x89108 data 0x1cbee8ef89f575e3 C
+        90329000: global: IFetch from .cpu.inst of size 8 on address 0x89108 data 0x1cbee8ef89f575e3 C
+        90329500: global: IFetch from .cpu.inst of size 8 on address 0x89108 data 0x1cbee8ef89f575e3 C
+        90330000: global: IFetch from .cpu.inst of size 8 on address 0x89110 data 0xe900000759e8000a C
+        90331000: system.mem_ctrls: access wrote 8 bytes to address 2dd08
+        90331000: global: Write from .cpu.data of size 8 on address 0x2dd08 data 0x7ffff7a10112 C
+        90332500: global: IFetch from .cpu.inst of size 8 on address 0x12add0 data 0x30608f0d8b4cfa89 C
+        90333000: global: IFetch from .cpu.inst of size 8 on address 0x12add0 data 0x30608f0d8b4cfa89 C
+        90333500: global: IFetch from .cpu.inst of size 8 on address 0x12add8 data 0xbe000000e7b84100 C
+        90334000: global: Read from .cpu.data of size 8 on address 0x43ae68 data 0xffffffffffffff80 C
+        90334500: global: IFetch from .cpu.inst of size 8 on address 0x12add8 data 0xbe000000e7b84100 C
+        90335000: global: IFetch from .cpu.inst of size 8 on address 0x12add8 data 0xbe000000e7b84100 C
+        90335500: global: IFetch from .cpu.inst of size 8 on address 0x12ade0 data 0x2e6619eb0000003c C
+        90336000: global: IFetch from .cpu.inst of size 8 on address 0x12ade0 data 0x2e6619eb0000003c C
+        90337500: global: IFetch from .cpu.inst of size 8 on address 0x12adf8 data 0x89f42277fffff000 C
+        90338000: global: IFetch from .cpu.inst of size 8 on address 0x12ae00 data 0x3d48050fc08944d7 C
+        90338500: global: IFetch from .cpu.inst of size 8 on address 0x12ae00 data 0x3d48050fc08944d7 C
+        90339000: global: IFetch from .cpu.inst of size 8 on address 0x12ae00 data 0x3d48050fc08944d7 C
+
+      
