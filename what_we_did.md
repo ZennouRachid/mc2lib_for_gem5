@@ -37,9 +37,8 @@ We set up the system's parameters according to Table 2 in the paper:
   
  - _Memory hit latency_: **We did not find where to set up the Memory latency parameters, so we assume we are running with the default parameters.**
 
-## Experiments
 
-### Starting up the X86 full system simulation
+## Starting up the X86 full system simulation
 
 ```console
 rachid@ubuntu:~/gem5$ ./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed 
@@ -162,23 +161,32 @@ warn: x86 cpuid: unknown family 0x8086
 hack: Assuming logical destinations are 1 << id.
 ```
 
-# Run a hello world script under X86 full system:
+## Experiments
 
-In order to test our X86 full system, we used it to  run a hello world script (gem5/tests/test-progs/hello/bin/x86/linux/hello):
+### Hello world!under X86 full system:
 
-```(none) movefile # ./hello```
+In order to test the X86 full system setup, we run a hello world script from the test suit ```(gem5/tests/test-progs/hello/bin/x86/linux/hello)```:
 
+```(console)
+(none) movefile # ./hello
 ./hello
+```
+We succesfully got,
 
-Hello world!
+```Hello world!```
 
-## Run Mcversi Guest Workload under X86 full system:
+## Running Mcversi's Guest Workload under X86 full system:
+
+We then tried to run MecVersi's guest workload, following the instructions from [McVersi's github](https://github.com/melver/mc2lib/blob/master/contrib/mcversi/run-10-8KB.sh)
 
 ### Using 4 threads:
 
+```(console)
 (none) movefile # ```./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000```
 
 ./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000
+```
+However, this gets us the following segmentation fault error,
 
 ```
 Threads: 4
@@ -202,12 +210,17 @@ guest_workload.[834]: segfault at 0000000000000000 rip 00002aaaaaacb000 rsp 0000
 Segmentation fault
 ```
 
-### Using 10 threads:
-(
-none) movefile # ```./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000```
+### Using 10 threads
+
+We also tried using 10 threads, again with no luck.
+
+``(console)
+none) movefile # ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
 
 ./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000
+```
 
+```
 Threads: 10 
 
 Test iterations: 15729152
@@ -219,61 +232,4 @@ Spawning threads ...
 guest_workload.x86-64: guest_workload.c:223: spawn_threads: Assertion `!rc' failed.
 
 Aborted
-
-# Get traces using Gem5 (github version of Gem5):
-
-Here is an example of getting traces from Gem5 execution:
-
-
-   1. Using System emulation mode (SE):
-   
-```./build/X86/gem5.opt --debug-flags=MMU --debug-file=mmu_trace.log ./configs/example/se.py --cpu-type=TimingSimpleCPU --caches --l2cache -c tests/test-progs/hello/bin/x86/linux/hello ```
-
-   2. Using the full system mode (FS):
-
-```./build/X86/gem5.opt --debug-flags=TLB --debug-file=tlb_trace.log ./configs/example/fs.py –cpu-type=TimingSimpleCPU --caches --l2cache```
-
-## Traces of Ruby Random Memory tests:
-
-We run the ruby random test script (configs/example/ruby_random_test.py) with the Flag MemoryAccess:
-
-``` ./build/X86/gem5.opt --debug-flags=MemoryAccess --debug-file=ruby_random_test.trace ./configs/example/ruby_random_test.py –num-cpu=4 --caches --ruby ```
-
-Here is an example of output:
-
-     54: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x3fc0 C
-     54: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-     54: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-     54: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-     54: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    184: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x58c0 C
-    184: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    184: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    184: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    184: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    200: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x34c0 C
-    200: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    200: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    200: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    200: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    205: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x33c0 C
-    205: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    205: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    205: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    205: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    422: system.mem_ctrls: access wrote 64 bytes to address 3fc0
-    422: global: Write from .ruby.dir_cntrl0 of size 64 on address 0x3fc0 C
-    422: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    422: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    422: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 31 00 00 00               1   
-    422: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    451: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x400 C
-    451: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    451: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    451: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    451: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    456: global: Read from .ruby.dir_cntrl0 of size 64 on address 0x57c0 C
-    456: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    456: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    456: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-    456: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00    
+```
