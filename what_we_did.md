@@ -1,4 +1,6 @@
-We use a Virtual machine with the following parameters :
+# Running McVersi
+
+We use an Ubuntu Virtual machine set as follows:
 
 Memory : 4096MB
 
@@ -8,7 +10,27 @@ Hard disk : 250 GB
 
 OS : Ubuntu 18.04.1 LTS 64-bit
 
-# Run X86 full system
+## gem5 setup
+
+### Configuration Parameters
+
+We set up the system's parameters according to Table 2 in the paper:
+
+ - _ROB entries_: We modified the default value of ROBEntries in ```src/cpu/o3/O3CPU.py```. The default value is 192; we modify it to 40.
+ 
+ ```ROB entries = 40``` 
+ 
+ - _LSQ entries_: We modified the default value of LQEntries and SQEntries in ```src/cpu/o3/O3CPU.py```. Since gem5 has a separate queue for loads and stores, we set each variable to 16 so that the aggregated size becomes 32.
+ 
+```LSQ entries = 32```
+ 
+ - _L1 and L2 hit latency_: We modified the default value of hit_latency in the L1Cache class and L2Cache class in ```configs/common/Caches.py```. We set L1 hit latency to 3 and L2 hit latency to 30.
+  
+ - _Memory hit latency_: **We did not find where to set up the Memory latency parameters, so we assume we are running with the default parameters.**
+
+## Experiments
+
+### Starting up the X86 full system simulation
 
 ```console
 rachid@ubuntu:~/gem5$ ./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --mem-size=512MB --cpu-type=detailed --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4  --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed 
@@ -141,9 +163,9 @@ In order to test our X86 full system, we used it to  run a hello world script (g
 
 Hello world!
 
-# Run Mcversi Guest Workload under X86 full system:
+## Run Mcversi Guest Workload under X86 full system:
 
-## Using 4 threads:
+### Using 4 threads:
 
 (none) movefile # ```./guest_workload.x86-64 4 0xf00200 0x09140010 0x100000000```
 
@@ -171,7 +193,7 @@ guest_workload.[834]: segfault at 0000000000000000 rip 00002aaaaaacb000 rsp 0000
 Segmentation fault
 ```
 
- ## Using 10 threads:
+### Using 10 threads:
 (
 none) movefile # ```./guest_workload.x86-64 10 0xf00200 0x09140010 0x100000000```
 
@@ -201,7 +223,7 @@ Here is an example of getting traces from Gem5 execution:
 
 ```./build/X86/gem5.opt --debug-flags=TLB --debug-file=tlb_trace.log ./configs/example/fs.py –cpu-type=TimingSimpleCPU --caches --l2cache```
 
-# Traces of Ruby Random Memory tests:
+## Traces of Ruby Random Memory tests:
 
 We run the ruby random test script (configs/example/ruby_random_test.py) with the Flag MemoryAccess:
 
