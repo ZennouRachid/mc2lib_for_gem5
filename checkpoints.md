@@ -240,7 +240,7 @@ Escape character is '^]'.
 
 it remains like this for long time without any progress.
 
-## Restore checkpoint with only cpu-type=detailed as parameter (and cache):
+## Restore checkpoint with only cpu-type=detailed as parameter (and cache) from checkpoint taken at attempt 3 (with only cpu-type=timing parameter):
 rachid@ubuntu:~/Documents/gem5-e1$ ```./build/X86/gem5.opt configs/example/fs.py -r 1  --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=detailed --caches```
 
 ### Gem5 terminal:
