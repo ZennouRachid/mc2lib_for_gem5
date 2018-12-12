@@ -2,10 +2,11 @@
 
 ## Cloning the REPO
 
-We use gitHub's [git-lfs](https://git-lfs.github.com/) support to store [several large binary files](binaries.md). After cloning the repo, please do a lfs fetch update from the repository root folder to retrieve them.
+We use gitHub's [git-lfs](https://git-lfs.github.com/) support to store [several large binary files](binaries.md). After cloning the repo, please do a git lfs fetch and update from the repository root folder to retrieve them.
 
 ```(console)
 git lfs fetch
+git lfs pull
 ```
 
 ## Install GEM5 instructions:
