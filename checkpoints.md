@@ -238,5 +238,5 @@ Escape character is '^]'.
 ==== m5 slave terminal: Terminal 0 ====
 ```
 
-it remains like this for long time without answer
+it remains like this for long time without any progress.
 
