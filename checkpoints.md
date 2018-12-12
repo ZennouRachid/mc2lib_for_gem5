@@ -1,6 +1,6 @@
  # Checkpoint creation:
  ##  Attempt 1 (using paper parameters and cpu-type=timing):
-```rachid@ubuntu:~/Documents/gem5-e1$ ./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=timing --mem-size=512MB --cpu-clock=2GHz --ruby --num-cpus=8 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
+```rachid@ubuntu:~/Documents/gem5-e1$ ./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=timing --mem-size=512MB --cpu-clock=2GHz --ruby --caches --l2cache --num-cpus=8 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
   ### Telnet interface:
 (none) / # ```m5 checkpoint```
 
@@ -74,7 +74,7 @@ Abandon (core dumped)
 -----------------------------------------------------------------
 ## Attempt 2 (using paper parameters but with 4 cpus instead 8 and cpu-type=timing):
 
-rachid@ubuntu:~/Documents/gem5-e1$ ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=timing --mem-size=512MB --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
+rachid@ubuntu:~/Documents/gem5-e1$ ```./build/X86/gem5.opt configs/example/fs.py --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=timing --mem-size=512MB --cpu-clock=2GHz --ruby --caches --l2cache --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
   ### Telnet Interface:
   
 (none) / #``` m5 checkpoint```
@@ -172,7 +172,7 @@ Writing checkpoint
    
 # Restore checkpoint with cpu-type=detailed:
 ## Using paper parameters:
-rachid@ubuntu:~/Documents/gem5-e1$ ``` ./build/X86/gem5.opt configs/example/fs.py -r 1  --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=detailed --mem-size=512MB --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
+rachid@ubuntu:~/Documents/gem5-e1$ ``` ./build/X86/gem5.opt configs/example/fs.py -r 1  --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=detailed --mem-size=512MB --cpu-clock=2GHz --ruby --caches --l2cache --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed```
 
 ### Gem5 terminal:
 ```console
@@ -182,7 +182,7 @@ gem5 is copyrighted software; use the --copyright option for details.
 gem5 compiled Nov 30 2018 02:16:46
 gem5 started Dec 11 2018 06:02:19
 gem5 executing on ubuntu, pid 10727
-command line: ./build/X86/gem5.opt configs/example/fs.py -r 1 --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=detailed --mem-size=512MB --cpu-clock=2GHz --ruby --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed
+command line: ./build/X86/gem5.opt configs/example/fs.py -r 1 --disk-image=/home/rachid/gem5/full_system_images/disks/linux-x86.img --kernel=/home/rachid/gem5/full_system_images/binaries/x86_64-vmlinux-2.6.22.9.smp --cpu-type=detailed --mem-size=512MB --cpu-clock=2GHz --ruby --caches --l2cache --num-cpus=4 --l1d_size=32kB --l1i_size=32kB --cacheline_size=64 --l1i_assoc=4 --l1d_assoc=4 --num-l2caches=8 --l2_size=128kB --l2_assoc=4 --topology=Mesh --mesh-rows=2 --num-dirs=8 --garnet-network=fixed
 
 warn: add_child('cls'): child 'credit_links0 credit_links1' already has parent
 warn: add_child('cls'): child 'credit_links0 credit_links1' already has parent
