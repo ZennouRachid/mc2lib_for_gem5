@@ -256,8 +256,8 @@ Check::initiateCheck()
     pkt->dataDynamic(dataArray);
 
 
-     //Rachid was here, modified this DPRINTF by adding *dataArray and m_address
-    DPRINTF(RubyTest, "Seq read: index %d data 0x%x address %#x\n", index, *dataArray, m_address);
+     //Rachid was here, modified this DPRINTF by adding data *(pkt->getConstPtr<uint8_t>()) and check *dataArray and adresse m_address
+    DPRINTF(RubyTest, "Seq read: index %d data 0x%x check 0x%x address %#x\n", index,*(pkt->getConstPtr<uint8_t>()), *dataArray, m_address);
 
     // push the subblock onto the sender state.  The sequencer will
     // update the subblock on the return
